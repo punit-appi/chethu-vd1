@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lipton Lemonade</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      margin: 0;
+      background-color: #9c958d;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+      height: 100%;
+      width: 100%;
+    }
+    .container {
+       min-height: 600px;
+      width: 100%;
+      margin: 3rem auto;
+      background: linear-gradient(90deg, #f8af0e 0%, #e08b00 100%);
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.25);
+      border: 4px solid white;
+    }
+    header {
+      padding: 1rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      color: white;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: 0.05em;
+      user-select: none;
+    }
+    nav {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #cbd5e1; /* lighter white */
+    }
+    nav a {
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    nav a:hover,
+    nav a.active {
+      color: white;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 20px;
+      height: 14px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      height: 2.5px;
+      background-color: white;
+      border-radius: 2px;
+    }
+    main {
+      position: relative;
+      padding: 3rem 0 4rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+    }
+    .main-text {
+        margin-left: 250px;
+      color: white;
+      font-weight: 700;
+      font-size: clamp(10rem, 7vw, 7rem);
+      letter-spacing: 0.4em;
+      margin-left: 400px;
+      
+      
+      /* We want L I P TO N big behind the can, with can centered on P */
+      z-index: 1;
+    }
+    .main-text span {
+      user-select: none;
+    }
+    .product-can {
+      position: absolute;
+      z-index: 2;
+      max-height: 700px;
+      width: auto;
+      filter: drop-shadow(0 10px 10px rgb(0 0 0 / 0.3));
+      top: 50px;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      object-fit: contain;
+    }
+    .floating-leaf {
+      position: absolute;
+      top: 30%;
+      left: 20%;
+      width: 200px;
+      max-width: 15vw;
+      filter: drop-shadow(0 2px 1px rgba(0,0,0,0.2));
+      animation: floatLeaf1 0.9s ease-in-out infinite alternate;
+      z-index: 3;
+    }
+    
+    .floating-leaf-2 {
+      top: 70%;
+      right: 10%;
+      width: 150px;
+      max-width: 12vw;
+      animation: floatLeaf2 5.5s ease-in-out infinite alternate;
+      z-index: 3;
+    }
+    .floating-leaf-3 {
+      top: 90%;
+      margin-right: 100px;
+      width: 150px;
+      max-width: 14vw;
+      animation: floatLeaf3 1s ease-in-out infinite alternate;
+      z-index: 3;
+    }
+    .floating-peach {
+      position: absolute;
+      top: 27%;
+      left: 43%;
+      width: 90px;
+     width: 150px;
+      z-index: 4;
+      animation: floatPeach 5.7s ease-in-out infinite alternate;
+      filter: drop-shadow(0 5px 5px rgba(0,0,0,0.25));
+      border-radius: 50%;
+    }
+    .floating-peach-slice {
+      position: absolute;
+      top: 60%;
+      left: 47%;
+      width: 150px;
+      max-width: 10vw;
+      z-index: 4;
+      animation: floatPeachSlice 4.7s ease-in-out infinite alternate;
+      filter: drop-shadow(0 7px 6px rgba(0,0,0,0.25));
+      border-radius: 12px 40% / 43% 35%;
+    }
+    #lf3{
+        margin-top: 200px;
+    }
+    #lip{
+        margin-top: 10px;
+    }
+
+    /* Animations */
+    @keyframes floatLeaf1 {
+      0%   { transform: translateY(0) rotate(0deg);  }
+      100% { transform: translateY(-15px) rotate(8deg);  }
+    }
+    @keyframes floatLeaf2 {
+      0%   { transform: translateY(0) rotate(8deg); }
+      100% { transform: translateY(15px) rotate(-5deg); }
+    }
+    @keyframes floatLeaf3 {
+      0%   { transform: translateY(0) rotate(3deg); }
+      100% { transform: translateY(-10px) rotate(-3deg); }
+    }
+    @keyframes floatPeach {
+      0%   { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-18px) scale(1.05); }
+    }
+    @keyframes floatPeachSlice {
+      0%   { transform: translateY(0) rotate(-6deg); }
+      100% { transform: translateY(12px) rotate(4deg); }
+    }
+
+    /* Responsive Navbar hamburger */
+    @media (max-width: 640px) {
+      nav {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+    
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="chethulwda" role="main" aria-label="Lipton Lemonade Advertisement">
+    <header>
+      <div class="logo" aria-label="Brand name Lemonades">LEMONADES</div>
+      <nav aria-label="Primary navigation">
+        <a href="#about" class="active" aria-current="page">About</a>
+        <a href="#products">Products</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+    <main>
+        
+      <div id="lip">
+        <h1 class="main-text" aria-hidden="true">
+        <span>L</span><span>I</span><span>P</span><span>T</span><span>O</span><span>N</span>
+      </h1>
+      </div>
+
+      <div><img 
+        class="product-can" 
+        src="pngegg (2).png" 
+        alt="Lipton Peach flavored iced tea can with colorful design and yellow background" 
+        loading="lazy"
+        onerror="this.onerror=null;this.src='https://placehold.co/150x270/png?text=Product+Image+Not+Available';"
+      /></div>
+
+      <div>
+        <img 
+        class="floating-leaf" 
+        src="weed - Copy.png" 
+        alt="Bright green natural tea leaf with detailed veins floating" 
+        loading="lazy"
+        onerror="this.onerror=null;this.style.display='none';"
+      />
+      </div>
+     <div>
+         <img 
+        class="floating-leaf-2" 
+        src="weed - Copy.png" 
+        alt="Fresh tea leaf symbolizing natural ingredients" 
+        loading="lazy"
+        onerror="this.onerror=null;this.style.display='none';"
+      />
+     </div>
+      <div id="lf3">
+        <img 
+        class="floating-leaf-3" 
+        src="weed - Copy.png" 
+        alt="Green tea leaf with texture and shadow" 
+        loading="lazy"
+        onerror="this.onerror=null;this.style.display='none';"
+      />
+      </div>
+     <div> <img 
+        class="floating-peach" 
+        src="pngegg (3).png" 
+        alt="Bright ripe peach fruit with red blush and smooth skin" 
+        loading="lazy"
+        onerror="this.onerror=null;this.style.display='none';"
+      /></div>
+     <div>
+         <img 
+        class="floating-peach-slice" 
+        src="pngegg (3).png" 
+        alt="Sliced peach wedge showing juicy orange-yellow meat and red skin" 
+        loading="lazy"
+        onerror="this.onerror=null;this.style.display='none';"
+      />
+     </div>
+    </main>
+  </div>
+
+ 
+</body>
+</html>

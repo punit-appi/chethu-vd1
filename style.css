@@ -1,0 +1,409 @@
+/* Basic Reset & Body Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    background-color: #f0f0f0; /* Light background for the overall page */
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    position: absolute;
+    width: 100%;
+    z-index: 100; /* Ensure navbar is above other content */
+    color: #fff; /* Default color for navbar text */
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar nav ul li {
+    margin-left: 30px;
+}
+
+.navbar nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.navbar nav ul li a:hover {
+    color: #ddd;
+}
+
+.navbar .menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    display: none; /* Hidden on desktop, shown on smaller screens with media queries */
+}
+
+/* Product Section */
+.product-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden; /* Important for containing animations */
+}
+
+.product-display {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.product-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none; /* Disable interaction when hidden */
+}
+
+.product-item.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Backgrounds */
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: background-color 0.5s ease; /* Smooth color change */
+}
+
+.sprite-bg {
+    background-color: #008000; /* Dark green for Sprite */
+}
+
+.fanta-bg {
+    background-color: #FF8C00; /* Orange for Fanta */
+}
+
+.lipton-bg {
+    background-color: #DAA520; /* Gold/Yellow for Lipton */
+}
+
+/* Leaves Animation (Basic CSS animation) */
+.leaves-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.leaf {
+    position: absolute;
+    width: 80px; /* Adjust size as needed */
+    height: auto;
+    animation: fall linear infinite;
+    z-index: 1; /* Below product can */
+}
+
+.leaf-1 { top: -10%; left: 10%; animation-duration: 10s; animation-delay: 0s; }
+.leaf-2 { top: -20%; left: 30%; animation-duration: 12s; animation-delay: 2s; transform: scale(0.8) rotate(45deg); }
+.leaf-3 { top: -15%; left: 50%; animation-duration: 9s; animation-delay: 1s; transform: scale(1.1) rotate(20deg); }
+.leaf-4 { top: -25%; left: 70%; animation-duration: 11s; animation-delay: 3s; transform: scale(0.9) rotate(60deg); }
+.leaf-5 { top: -12%; left: 85%; animation-duration: 10.5s; animation-delay: 0.5s; transform: scale(1.2) rotate(30deg); }
+
+@keyframes fall {
+    0% { transform: translateY(-100px) rotate(0deg) scale(1); opacity: 1; }
+    100% { transform: translateY(calc(100vh + 100px)) rotate(720deg) scale(0.5); opacity: 0; }
+}
+
+
+/* Product Content */
+.product-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+}
+
+.product-name-large {
+    font-size: 20vw; /* Responsive font size */
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.2); /* Transparent white for background text */
+    position: absolute;
+    white-space: nowrap;
+    user-select: none; /* Prevent text selection */
+}
+
+.sprite-text { color: rgba(0, 255, 0, 0.1); } /* More transparent green for Sprite text */
+.fanta-text { color: rgba(255, 140, 0, 0.1); } /* More transparent orange for Fanta text */
+.lipton-text { color: rgba(218, 165, 32, 0.1); } /* More transparent gold for Lipton text */
+
+
+.product-can {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px; /* Adjust size of the can */
+    height: auto;
+    z-index: 10;
+}
+
+.product-can img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.lemon-slice-1, .lemon-slice-2,
+.orange-slice-1, .orange-slice-2,
+.peach-slice-1, .peach-slice-2 {
+    position: absolute;
+    width: 100px; /* Adjust size of slices */
+    height: auto;
+}
+
+.lemon-slice-1 { top: 5%; left: -20%; transform: rotate(-30deg); }
+.lemon-slice-2 { bottom: 0%; right: -25%; transform: rotate(45deg); }
+.orange-slice-1 { top: 5%; left: -20%; transform: rotate(-30deg); }
+.orange-slice-2 { bottom: 0%; right: -25%; transform: rotate(45deg); }
+.peach-slice-1 { top: 5%; left: -20%; transform: rotate(-30deg); }
+.peach-slice-2 { bottom: 0%; right: -25%; transform: rotate(45deg); }
+
+
+/* Product Details Section (for Fanta example in video) */
+.product-details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333; /* Dark background */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 20; /* Above product display */
+}
+
+.product-details.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.product-details.hidden {
+    display: none; /* Hide when not active */
+}
+
+.detail-content {
+    flex: 1;
+    max-width: 600px;
+    margin-right: 50px;
+}
+
+.detail-content h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.detail-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.detail-can {
+    flex: 0 0 400px; /* Fixed width for can */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detail-can img {
+    max-width: 100%;
+    height: auto;
+}
+
+.orange-slice-detail-1, .orange-slice-detail-2 {
+    position: absolute;
+    width: 120px;
+    height: auto;
+}
+
+.orange-slice-detail-1 { top: 10%; left: -10%; transform: rotate(-20deg); }
+.orange-slice-detail-2 { bottom: 10%; right: -15%; transform: rotate(30deg); }
+
+/* Buy Now Button */
+.buy-now-btn {
+    background-color: #fff;
+    color: #333;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.buy-now-btn:hover {
+    background-color: #eee;
+}
+
+
+/* Product Selector Section */
+.product-selector {
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    z-index: 50; /* Above other content */
+}
+
+.selector-item {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 200px; /* Fixed width for selector items */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 50px; /* Space for color block */
+    overflow: hidden; /* Hide overflow for color block */
+}
+
+.selector-item.active-selector {
+    transform: translateY(-20px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.selector-color-block {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px; /* Height of the color block */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.sprite-color { background-color: #008000; }
+.fanta-color { background-color: #FF8C00; }
+.lipton-color { background-color: #DAA520; }
+
+.selector-item img {
+    width: 80px; /* Size of small can images */
+    height: auto;
+    margin-bottom: 10px;
+    position: relative; /* To be above the color block */
+    z-index: 2;
+    transform: translateY(-20px); /* Move image up slightly */
+}
+
+.selector-item h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.selector-item .buy-now-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar nav {
+        display: none; /* Hide navigation links on small screens */
+    }
+
+    .navbar .menu-icon {
+        display: block; /* Show menu icon */
+    }
+
+    .product-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .product-name-large {
+        font-size: 15vw;
+        position: static; /* Adjust positioning for smaller screens */
+    }
+
+    .product-can {
+        width: 200px;
+        margin-top: 20px;
+    }
+
+    .lemon-slice-1, .lemon-slice-2,
+    .orange-slice-1, .orange-slice-2,
+    .peach-slice-1, .peach-slice-2 {
+        width: 70px;
+    }
+
+    .product-details {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .detail-content {
+        margin-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .detail-can {
+        flex: none;
+        width: 250px;
+    }
+
+    .product-selector {
+        flex-direction: column;
+        align-items: center;
+        bottom: 20px;
+        gap: 20px;
+    }
+
+    .selector-item {
+        width: 90%; /* Make selector items wider */
+    }
+}
